@@ -175,6 +175,13 @@ int lv_i18n_set_locale(const char * l_name)
 static const char * __lv_i18n_get_text_core(lv_i18n_phrase_t * trans, const char * msg_id)
 {
     uint16_t i;
+
+    //REMOVE "$"
+    if (msg_id[0] == 0x24)
+    {
+        msg_id++;
+    }
+
     for(i = 0; trans[i].msg_id != NULL; i++) {
         if(strcmp(trans[i].msg_id, msg_id) == 0) {
             /*The msg_id has been found. Check the translation*/
